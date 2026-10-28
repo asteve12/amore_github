@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F5F2EA;
+  --color-cream-dark: #EBE4DA;
+  --color-cream-light: #FAF7F2;
+  --color-amore-red: #D93829;
+  --color-amore-red-hover: #B82B1E;
+  --color-warm-black: #1E1B18;
+  --color-charcoal: #36322E;
+  --color-clay-pink: #E8A798;
+  --color-pastel-yellow: #F9E498;
+  --color-gingham-blue: #315B7D;
+}
+
+/* Explicit Google Font Utility Classes */
+.font-display {
+  font-family: var(--font-fredoka), "Fredoka", cursive, sans-serif !important;
+}
+
+.font-hand {
+  font-family: var(--font-caveat), "Caveat", cursive !important;
+}
+
+.font-sans {
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif !important;
+}
+
+/* Base Craft Texture & Grid */
+body {
+  background-color: #F5F2EA;
+  color: #1E1B18;
+  background-image: 
+    linear-gradient(to right, rgba(30, 27, 24, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 27, 24, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  overflow-x: hidden;
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+}
+
+/* Subtle Paper Noise Overlay */
+.paper-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* Slanted mask for hero framing */
+.slanted-mask {
+  clip-path: polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%);
+}
+
+@media (max-width: 1024px) {
+  .slanted-mask {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+/* Floating Animations */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-float-slow {
+  animation: gentleFloat 4.8s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: gentleFloat 3.5s ease-in-out infinite 0.7s;
+}
+
+/* Spring Wobble Effect */
+.spring-wobble {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.spring-wobble:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+.spring-wobble:active {
+  transform: scale(0.95);
+}
+
+/* Image Zooming */
+.card-img-zoom {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .card-img-zoom {
+  transform: scale(1.05);
+}
+
+/* Dashed Stitch Lines */
+.stitch-border {
+  border-style: dashed;
+  border-width: 1.5px;
+  border-color: rgba(30, 27, 24, 0.2);
+}
+
+/* Polaroid Tape Styling */
+.polaroid-tape {
+  position: absolute;
+  width: 70px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2EA;
+}
+::-webkit-scrollbar-thumb {
+  background: #D93829;
+  border-radius: 4px;
+}
+
+/* Continuous Auto-Scrolling Marquee Ticker */
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-marquee {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 28s linear infinite;
+}
+
+.animate-scroll-marquee:hover {
+  animation-play-state: paused;
+}
